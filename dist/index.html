@@ -81,6 +81,10 @@
      </span>
     </a>
     <nav aria-label="Navegação principal" class="nav-links" id="navLinks">
+     <div class="nav-menu-heading" aria-hidden="true">
+      <span>Explorar</span>
+      <small>Instituto Nova Horizonte</small>
+     </div>
      <a class="nav-link" href="#inicio">
       Início
      </a>
@@ -102,6 +106,18 @@
      <a class="nav-link" href="#contactos">
       Contactos
      </a>
+     <div class="nav-menu-actions">
+      <a class="btn btn-primary" href="#admissoes">
+       Candidatar-me
+      </a>
+      <a class="btn btn-secondary" href="#plataforma">
+       Portal do estudante
+      </a>
+     </div>
+     <div class="nav-menu-footer">
+      <a href="#contactos">Apoio ao estudante</a>
+      <span>Maputo, Moçambique</span>
+     </div>
     </nav>
     <div class="nav-actions">
      <a class="btn btn-secondary" href="#plataforma">
@@ -111,14 +127,14 @@
       Candidatar-me
      </a>
     </div>
-    <button aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menuToggle">
-     <svg class="icon">
-      <path d="M4 7h16M4 12h16M4 17h16">
-      </path>
-     </svg>
+    <button aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menuToggle" type="button">
+     <span></span>
+     <span></span>
+     <span></span>
     </button>
    </div>
   </header>
+  <div aria-hidden="true" class="nav-backdrop" id="navBackdrop"></div>
   <main>
    <section class="hero" id="inicio">
     <div class="container hero-grid">

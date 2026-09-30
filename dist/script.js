@@ -1,6 +1,7 @@
 const navbar = document.querySelector('#navbar');
 const menu = document.querySelector('#menuToggle');
 const nav = document.querySelector('#navLinks');
+const navBackdrop = document.querySelector('#navBackdrop');
 
 addEventListener(
     'scroll',
@@ -9,21 +10,41 @@ addEventListener(
 );
 
 
-// Menu mobile
-menu.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
+// Menu tablet e mobile
+const setMenuState = open => {
+    if (open) {
+        document.documentElement.style.setProperty(
+            '--nav-menu-top',
+            `${Math.max(0, Math.round(navbar.getBoundingClientRect().bottom))}px`
+        );
+    }
 
-    menu.setAttribute('aria-expanded', open);
+    nav.classList.toggle('open', open);
+    navBackdrop.classList.toggle('open', open);
+    menu.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     document.body.classList.toggle('menu-open', open);
+};
+
+menu.addEventListener('click', () => {
+    setMenuState(menu.getAttribute('aria-expanded') !== 'true');
+});
+
+navBackdrop.addEventListener('click', () => setMenuState(false));
+
+addEventListener('keydown', event => {
+    if (event.key === 'Escape') setMenuState(false);
+});
+
+addEventListener('resize', () => {
+    if (innerWidth > 1100) setMenuState(false);
 });
 
 
 // Fechar menu ao clicar num link
 nav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-        nav.classList.remove('open');
-        menu.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('menu-open');
+        setMenuState(false);
     });
 });
 
